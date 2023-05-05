@@ -19,6 +19,7 @@ vx1 = 0;
 vy1 = 0;
 ax1 = 0;
 ay1 = 0;
+r1 = 0.05;
 
 %Partícula 2 (Vemelha)
 x2 = -1;
@@ -29,9 +30,10 @@ vx2 = 0;
 vy2 = 0;
 ax2 = 0;
 ay2 = 0;
+r2 = 0.05;
 
 %Partícula 3 (Azul)
-x3 = -2;
+x3 = -1;
 y3 = -1;
 q3 = -2*10^-4;
 m3 = 8.85 * 10^-12;
@@ -39,6 +41,7 @@ vx3 = 0;
 vy3 = 0;
 ax3 = 0;
 ay3 = 0;
+r3 = 0.05;
 
 %Espaço
 [x,y] =  meshgrid(-4:0.03125:4);
@@ -56,11 +59,11 @@ Ey = Ey./modE;
 figure(1)
 h = quiver(x,y,Ex,Ey);
 hold on
-viscircles([x1,y1],0.05,'Color', 'g');
+viscircles([x1,y1],r1,'Color', 'g');
 
-viscircles([x2,y2],0.05,'Color', 'r');
+viscircles([x2,y2],r2,'Color', 'r');
 
-viscircles([x3,y3],0.05,'Color', 'b');
+viscircles([x3,y3],r3,'Color', 'b');
 title('campo eletrico de 3 cargas');
 hold off
 
@@ -71,7 +74,7 @@ frametime = 8*10^-8
 
 %Contador
 k = 0;
-while 1
+while k<100
     %===============================================================================%
     %Calculando a força elétrica que atua em cada uma das partículas
     F1x = q1*(EletricFieldX(x2,y2,q2,x1,y1)+EletricFieldX(x3,y3,q3,x1,y1));
@@ -143,11 +146,11 @@ while 1
     xlim([-4,4]);
     ylim([-4,4]);
     hold on
-    viscircles([x1,y1],0.05,'Color', 'g');
+    viscircles([x1,y1],r1,'Color', 'g');
 
-    viscircles([x2,y2],0.05,'Color', 'r');
+    viscircles([x2,y2],r2,'Color', 'r');
 
-    viscircles([x3,y3],0.05,'Color', 'b');
+    viscircles([x3,y3],r3,'Color', 'b');
     title('CAMPO ELÉTRICO DE 3 CARGAS');
     hold off
     %===============================================================================%
